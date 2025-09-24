@@ -1,5 +1,7 @@
+import { v4 as uuidv4 } from "https://jspm.dev/uuid";
 import { initialTodos, validationConfig } from "../utils/constants.js";
 import Todo from "../components/Todo.js";
+import FormValidator from "../components/FormValidator.js";
 
 const addTodoButton = document.querySelector(".button_action_add");
 const addTodoPopup = document.querySelector("#add-todo-popup");
@@ -17,18 +19,10 @@ const closeModal = (modal) => {
 
 // The logic in this function should all be handled in the Todo class.
 const generateTodo = (data) => {
-  Todo = new Todo(data, `#todo-template`);
+  Todo = new Todo(data, "todo-template");
   const todoElement = Todo.getView();
 
   return todoElement;
-
-  // // Apply id and for attributes.
-  // // The id will initially be undefined for new todos.
-
-  // // If a due date has been set, parsing this it with `new Date` will return a
-  // // number. If so, we display a string version of the due date in the todo.
-  //
-  // }
 };
 
 addTodoButton.addEventListener("click", () => {
@@ -48,13 +42,17 @@ addTodoForm.addEventListener("submit", (evt) => {
   const date = new Date(dateInput);
   date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
 
-  const values = { name, date };
+  const id = uuidv4();
+  const values = { name, date, id };
   const todo = generateTodo(values);
   todosList.append(todo);
   closeModal(addTodoPopup);
 });
 
 initialTodos.forEach((item) => {
-  const todo = generateTodo(item);
-  todosList.append(todo);
+  Todo = generateTodo(item);
+  this._todosList.append(this._todo);
 });
+
+const newTodoValidate = FormValidator(validationConfig, addTodoForm);
+newTodoValidate.enableValidation();
