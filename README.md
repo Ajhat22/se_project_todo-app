@@ -1,17 +1,30 @@
-# Simple Todo App
-
-Give a brief description of the project here. Feel free to give it a different name.
+# Simple Todo
 
 ## Functionality
 
-Give a more detailed explanation of the project and its functionality.
+So this is a to do list maker to work and keep stuff orginised.
+
+### This to do list does the following
+
+- gives a simple and understandable way to manage tasks
+- you can add dates to when it needs to be done by (and in the duture maybe add photos for it aswell.)
+- creating tasks and deleting tasks are functionable
+- saddly it dosnt have cookies to give but ill add a dessert bar later
 
 ## Technology
 
-Give a description of the technologies and techniques used. Pictures, GIFs, or screenshots that detail the project features are recommended.
+### the major amount was made in:
+
+- html
+- css
+- and javascript
+
+### What i did was...
+
+- A lot of refactoring in javascript
 
 ## Deployment
 
 This project is deployed on GitHub Pages:
 
-- ADD LINK HERE
+[wanna visitmy little site?](https://ajhat22.github.io/se_project_todo-app)
