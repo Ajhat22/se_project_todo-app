@@ -20,9 +20,7 @@ const closeModal = (modal) => {
 // The logic in this function should all be handled in the Todo class.
 const generateTodo = (data) => {
   Todo = new Todo(data, "todo-template");
-  const todoElement = Todo.getView();
-
-  return todoElement;
+  return todo.getView();
 };
 
 addTodoButton.addEventListener("click", () => {
@@ -50,9 +48,9 @@ addTodoForm.addEventListener("submit", (evt) => {
 });
 
 initialTodos.forEach((item) => {
-  Todo = generateTodo(item);
-  this._todosList.append(this._todo);
+  const todoEl = generateTodo(item);
+  todosList.append(todoEl);
 });
 
-const newTodoValidate = FormValidator(validationConfig, addTodoForm);
+const newTodoValidate = new FormValidator(validationConfig, addTodoForm);
 newTodoValidate.enableValidation();

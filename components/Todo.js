@@ -5,7 +5,7 @@ class Todo {
   }
 
   _generateDate() {
-    this._dueDate = new Date(data.date);
+    this._dueDate = new Date(this._data.date);
     if (!isNaN(this._dueDate)) {
       this._todoDate.textContent = `Due: ${this._dueDate.toLocaleString(
         "en-US",
@@ -20,7 +20,7 @@ class Todo {
 
   _setEventListener() {
     this._todoCheckboxEl.addEventListener("change", () => {
-      this._data.completed = this.data.completed;
+      this._data.completed = !this._data.completed;
       console.log(this._data.completed);
     });
 
@@ -46,9 +46,9 @@ class Todo {
     this._todoDeleteBtn = this._todoElement.querySelector(".todo__delete-btn");
 
     todoNameEl.textContent = this._data.name;
-    this._generateCheckboxEl;
-    this.__setEventListener;
-    this._dueDate;
+    this.__generateCheckboxEl();
+    this.__setEventListener();
+    this.__generateDate();
     return this._todoElement;
   }
 }
