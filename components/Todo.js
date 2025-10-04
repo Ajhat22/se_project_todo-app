@@ -1,10 +1,10 @@
 class Todo {
   constructor(data, selector) {
     this._data = data;
-    this._selectorElem = document.querySelector(selector);
+    this._selectorElem = document.querySelector("#todo-template");
   }
 
-  _generateDate() {
+  __generateDate() {
     this._dueDate = new Date(this._data.date);
     if (!isNaN(this._dueDate)) {
       this._todoDate.textContent = `Due: ${this._dueDate.toLocaleString(
@@ -18,19 +18,19 @@ class Todo {
     }
   }
 
-  _setEventListener() {
+  __setEventListener() {
     this._todoCheckboxEl.addEventListener("change", () => {
       this._data.completed = !this._data.completed;
       console.log(this._data.completed);
     });
 
     this._todoDeleteBtn.addEventListener("click", () => {
-      this._todoElement.remove();
+      this._todoElem.remove();
     });
   }
-  _generateCheckboxEl() {
-    this._todoCheckboxEl = this._todoElement.querySelector(".todo__completed");
-    this._todoLabel = this._todoElement.querySelector(".todo__label");
+  __generateCheckboxEl() {
+    this._todoCheckboxEl = this._todoElem.querySelector(".todo__completed");
+    this._todoLabel = this._todoElem.querySelector(".todo__label");
 
     this._todoCheckboxEl.checked = this._data.completed;
     this._todoCheckboxEl.id = `todo-${this._data.id}`;
@@ -38,18 +38,18 @@ class Todo {
   }
 
   getView() {
-    this._todoElement = this._selectorElem.content
+    this._todoElem = this._selectorElem.content
       .querySelector(".todo")
       .cloneNode(true);
-    const todoNameEl = this._todoElement.querySelector(".todo__name");
-    this._todoDate = this._todoElement.querySelector(".todo__date");
-    this._todoDeleteBtn = this._todoElement.querySelector(".todo__delete-btn");
+    const todoNameEl = this._todoElem.querySelector(".todo__name");
+    this._todoDate = this._todoElem.querySelector(".todo__date");
+    this._todoDeleteBtn = this._todoElem.querySelector(".todo__delete-btn");
 
     todoNameEl.textContent = this._data.name;
     this.__generateCheckboxEl();
     this.__setEventListener();
     this.__generateDate();
-    return this._todoElement;
+    return this._todoElem;
   }
 }
 export default Todo;

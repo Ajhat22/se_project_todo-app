@@ -19,8 +19,8 @@ const closeModal = (modal) => {
 
 // The logic in this function should all be handled in the Todo class.
 const generateTodo = (data) => {
-  Todo = new Todo(data, "todo-template");
-  return todo.getView();
+  const TodoNew = new Todo(data, "#todo-template");
+  return TodoNew.getView();
 };
 
 addTodoButton.addEventListener("click", () => {
@@ -29,6 +29,7 @@ addTodoButton.addEventListener("click", () => {
 
 addTodoCloseBtn.addEventListener("click", () => {
   closeModal(addTodoPopup);
+  addTodoForm.reset();
 });
 
 addTodoForm.addEventListener("submit", (evt) => {

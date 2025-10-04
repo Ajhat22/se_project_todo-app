@@ -27,4 +27,4 @@ So this is a to do list maker to work and keep stuff orginised.
 
 This project is deployed on GitHub Pages:
 
-[wanna visitmy little site?](https://ajhat22.github.io/se_project_todo-app)
+[wanna visit my little site?](https://ajhat22.github.io/se_project_todo-app)
