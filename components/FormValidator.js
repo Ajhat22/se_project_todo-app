@@ -10,14 +10,14 @@ class FormValidator {
 
   _showInputError = (inputElement, errorMessage) => {
     inputElement.classList.add(this._inputErrorClass);
-    this._errorElem = this._formElem.querySelector(`#${inputElement.id}-error`);
+    this._errorElem = this._inputErrorClass.querySelector(
+      `#${inputElement.id}-error`
+    );
     this._errorElem.textContent = errorMessage;
     this._errorElem.classList.add(this._errorClass);
   };
 
   _hideInputError = (inputElement) => {
-    this._errorElementId = this._errorElem;
-    this._errorElem = this._formElem.querySelector(this._errorElementId);
     inputElement.classList.remove(this._inputErrorClass);
     this._errorElem.classList.remove(this._errorClass);
     this._errorElem.textContent = "";
@@ -25,8 +25,7 @@ class FormValidator {
 
   _checkInputValidity = (inputElement) => {
     if (!inputElement.validity.valid) {
-      this._showInputError(inputElement);
-      return this._errorElem(errorMessage);
+      this._showInputError(inputElement, inputElement.validationMessage);
     } else {
       this._hideInputError(inputElement);
     }
@@ -39,7 +38,7 @@ class FormValidator {
   };
 
   _toggleButtonState = (buttonElement) => {
-    if (this._hasInvalidInput(this._inputList)) {
+    if (this._hasInvalidInput()) {
       buttonElement.classList.add(this._inactiveButtonClass);
       buttonElement.disabled = true;
     } else {
@@ -53,15 +52,15 @@ class FormValidator {
       this._formElem.querySelectorAll(this._inputSelector)
     );
     const buttonElement = this._formElem.querySelector(
-      this.submitButtonSelector
+      this._submitButtonSelector
     );
 
     this._toggleButtonState(buttonElement, this._inputList);
 
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
-        checkInputValidity(this._formElem, this._inputSelector);
-        this._toggleButtonState(buttonElement, this._inputList);
+        this._checkInputValidity(inputElement);
+        this._toggleButtonState(buttonElement);
       });
     });
   }
