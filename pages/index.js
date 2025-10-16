@@ -9,6 +9,10 @@ const addTodoForm = addTodoPopup.querySelector(".popup__form");
 const addTodoCloseBtn = addTodoPopup.querySelector(".popup__close");
 const todosList = document.querySelector(".todos__list");
 
+//extra stuff so i dont go nuts
+const todoInputElem = document.querySelector(".todo__name");
+const todoDateElem = document.querySelector(".todo__date");
+
 const openModal = (modal) => {
   modal.classList.add("popup_visible");
 };

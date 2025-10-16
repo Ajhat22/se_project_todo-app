@@ -8,6 +8,11 @@ class FormValidator {
     this._inactiveButtonClass = settings.inactiveButtonClass;
   }
 
+  /*_resetForm = (evt) => {
+    evt.target.name.value = "";
+    evt.target.date.value = "";
+  };*/
+
   _showInputError = (inputElement, errorMessage) => {
     inputElement.classList.add(this._inputErrorClass);
     this._errorElem = this._formElem.querySelector(`#${inputElement.id}-error`);
@@ -16,9 +21,9 @@ class FormValidator {
   };
 
   _hideInputError = (inputElement) => {
+    this._errorElem = this._formElem.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.remove(this._inputErrorClass);
     this._errorElem.classList.remove(this._errorClass);
-    this.resetValidation();
   };
 
   _checkInputValidity = (inputElement) => {
@@ -62,11 +67,6 @@ class FormValidator {
       });
     });
   };
-
-  resetValidation(buttonElement) {
-    this._inputSelector.value = "";
-    this._toggleButtonState(buttonElement);
-  }
 
   enableValidation() {
     this._formElem.addEventListener("submit", (evt) => {
