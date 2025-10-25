@@ -17,6 +17,7 @@ const openModal = (modal) => {
 
 const closeModal = (modal) => {
   modal.classList.remove("popup_visible");
+  newTodoValidate._resetForm("popup__input popup__input_type_date");
 };
 
 // The logic in this function should all be handled in the Todo class.

@@ -8,9 +8,9 @@ class FormValidator {
     this._inactiveButtonClass = settings.inactiveButtonClass;
   }
 
-  _resetForm = (evt) => {
-    evt.target.name.value.reset("");
-    evt.target.date.value.reset("");
+  _resetForm = () => {
+    document.getElementById("todo-name").value = "";
+    document.getElementById("todo-date").value = "";
   };
 
   _showInputError = (inputElement, errorMessage) => {
