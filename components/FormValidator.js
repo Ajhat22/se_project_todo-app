@@ -9,8 +9,8 @@ class FormValidator {
   }
 
   _resetForm = (evt) => {
-    evt.target.name.value.reset();
-    evt.target.date.value.reset();
+    evt.target.name.value.reset("");
+    evt.target.date.value.reset("");
   };
 
   _showInputError = (inputElement, errorMessage) => {
