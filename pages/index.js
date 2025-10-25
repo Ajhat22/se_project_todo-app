@@ -9,9 +9,7 @@ const addTodoForm = addTodoPopup.querySelector(".popup__form");
 const addTodoCloseBtn = addTodoPopup.querySelector(".popup__close");
 const todosList = document.querySelector(".todos__list");
 
-//extra stuff so i dont go nuts
-const todoInputElem = document.querySelector(".todo__name");
-const todoDateElem = document.querySelector(".todo__date");
+//extra stuff so i dont go nuts to deal with later
 
 const openModal = (modal) => {
   modal.classList.add("popup_visible");
@@ -24,7 +22,7 @@ const closeModal = (modal) => {
 // The logic in this function should all be handled in the Todo class.
 const generateTodo = (data) => {
   const TodoNew = new Todo(data, "#todo-template");
-  return TodoNew.getView();
+  return TodoNew._getView();
 };
 
 addTodoButton.addEventListener("click", () => {
