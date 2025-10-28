@@ -9,8 +9,7 @@ class FormValidator {
   }
 
   _resetForm = () => {
-    document.getElementById("todo-name").value = "";
-    document.getElementById("todo-date").value = "";
+    this._formElem.reset();
   };
 
   _showInputError = (inputElement, errorMessage) => {
