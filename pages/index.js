@@ -5,10 +5,10 @@ import FormValidator from "../components/FormValidator.js";
 
 const addTodoButton = document.querySelector(".button_action_add");
 const addTodoPopup = document.querySelector("#add-todo-popup");
-const addTodoForm = addTodoPopup.querySelector("add-todo-form");
+const addTodoForm = addTodoPopup.querySelector("#add-todo-form");
 const addTodoCloseBtn = addTodoPopup.querySelector(".popup__close");
 const todosList = document.querySelector(".todos__list");
-
+const newTodoValidate = new FormValidator(validationConfig, addTodoForm);
 //extra stuff so i dont go nuts to deal with later
 
 const openModal = (modal) => {
@@ -22,7 +22,7 @@ const closeModal = (modal) => {
 // The logic in this function should all be handled in the Todo class.
 const generateTodo = (data) => {
   const todoNew = new Todo(data, "#todo-template");
-  return todoNew.getView();
+  return todoNew._getView();
 };
 
 addTodoButton.addEventListener("click", () => {
@@ -37,19 +37,13 @@ addTodoForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
   const name = evt.target.name.value;
   const dateInput = evt.target.date.value;
-
   // Create a date object and adjust for timezone
   const date = new Date(dateInput);
   date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
-  newTodoValidate._resetForm("popup__input popup__input_type_date");
-  const id = uuidv4();
-  const values = { name, date, id };
-  const renderTodo = (item) => {
-    const todo = generateTodo(item);
-    todosList.append(todo);
-  };
+  const values = { name, date, id: uuidv4() };
+
+  newTodoValidate._resetValidation();
   renderTodo(values);
-  todosList.append(todo);
   closeModal(addTodoPopup);
 });
 
@@ -57,9 +51,8 @@ const renderTodo = (item) => {
   const todo = generateTodo(item);
   todosList.append(todo);
 };
-
 initialTodos.forEach((item) => {
   renderTodo(item);
 });
-const newTodoValidate = new FormValidator(validationConfig, addTodoForm);
+
 newTodoValidate.enableValidation();
