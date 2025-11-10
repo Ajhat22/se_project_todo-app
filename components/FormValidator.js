@@ -8,8 +8,9 @@ class FormValidator {
     this._inactiveButtonClass = settings.inactiveButtonClass;
   }
 
-  _resetValidation = () => {
+  resetValidation = () => {
     this._formElem.reset();
+    this._toggleButtonState();
   };
 
   _showInputError = (inputElement, errorMessage) => {
@@ -57,18 +58,17 @@ class FormValidator {
       this._submitButtonSelector
     );
 
-    this._toggleButtonState(this._buttonElement);
+    this._toggleButtonState();
 
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
         this._checkInputValidity(inputElement);
-        this._toggleButtonState(this._buttonElement);
+        this._toggleButtonState();
       });
     });
   };
 
   enableValidation() {
-    this._resetValidation();
     this._setEventListeners();
   }
 }

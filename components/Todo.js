@@ -1,10 +1,7 @@
-//the file name was changed because there was a error in the filing system due to todo.css its clashing in the browser.
-//i also went in to add the comment and its showing an error in the todo.css with the webhook idk how to fix it
-
 class Todo {
-  constructor(data, _selectorElem) {
+  constructor(data, templateSelector) {
     this._data = data;
-    this._selectorElem = document.querySelector("#todo-template");
+    this._selectorElem = document.querySelector(templateSelector);
   }
 
   _generateDate() {
@@ -40,7 +37,7 @@ class Todo {
     this._todoLabel.setAttribute("for", `todo-${this._data.id}`);
   }
 
-  _getView() {
+  getView() {
     this._todoElem = this._selectorElem.content
       .querySelector(".todo")
       .cloneNode(true);
