@@ -11,11 +11,9 @@ class PopupWithForm extends Popup {
     this._inputlist = this._popupForm.querySelectorAll(".popup__input");
     const values = {};
     this._inputlist.forEach((input) => {
-      values["input"] = ["name", "date"]; // Works for static strings too
+      values["input.name"] = ["input.value"];
     });
-    // this._name = document.getElementsByClassName(`todo__name`).value;
-    // this._dateInput = document.getElementsByClassName(`todo__date`).value;
-    // this._date = new Date(this._dateInput);
+    return values;
   }
 
   setEventListeners() {
