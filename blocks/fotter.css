@@ -1,0 +1,11 @@
+.footer {
+  display: flex;
+  justify-content: baseline;
+  align-content: center;
+}
+.footer__copyr {
+  border-top: 8px solid #2a0400;
+  padding: 10px 0;
+  margin: 15px 0;
+  text-align: center;
+}

@@ -23,18 +23,19 @@ sectionStuff.renderItems();
 
 const addTodoWindowPopup = new PopupWithForm({
   popupSelector: "#add-todo-popup",
-  handleFormSubmit: (evt) => {
-    evt.preventDefault();
-    const name = evt.target.name.value;
-    const dateInput = evt.target.date.value;
+  handleFormSubmit: (Inpvalues) => {
+    return Inpvalues;
 
-    const date = new Date(dateInput);
-    date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
-    const values = { name, date, id: uuidv4() };
+    //   evt.preventDefault();
 
-    newTodoValidate._resetValidation();
-    renderTodo(values);
-    addTodoWindowPopup.close();
+    //   const date = new Date(dateInput);
+    //   date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
+    //   const values = { name, date, id: uuidv4() };
+
+    //   newTodoValidate._resetValidation();
+    //   renderTodo(values);
+    //   addTodoWindowPopup.close();
+    //
   },
 });
 
@@ -42,8 +43,6 @@ addTodoWindowPopup.addEventListeners("click");
 //extra stuff so i dont go nuts to deal with later
 
 //this is fir later for confetti
-
-const closeModal = (modal) => {};
 
 // The logic in this function should all be handled in the Todo class.
 const generateTodo = (data) => {

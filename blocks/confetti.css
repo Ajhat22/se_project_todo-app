@@ -1,5 +1,27 @@
-confetti {
+.confetti {
 }
 
-confetti__menu {
+.confetti__menu {
+  display: flex;
+  align-self: flex-end;
+}
+
+.confetti__button {
+  list-style-type: none;
+  max-width: 12px;
+  max-height: 17px;
+}
+.confetti__menu_opt-1 {
+}
+
+.confetti__menu_opt-2 {
+}
+
+.confetti__menu_opt-3 {
+}
+
+.confetti__menu_opt-4 {
+}
+
+.confetti__menu_opt-5 {
 }
