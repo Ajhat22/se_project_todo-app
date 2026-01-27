@@ -38,15 +38,17 @@ const addTodoWindowPopup = new PopupWithForm({
     //
   },
 });
-
 addTodoWindowPopup.addEventListeners("click");
 //extra stuff so i dont go nuts to deal with later
 
 //this is fir later for confetti
 
+function handleCheck(completed) {
+  TodoCounter.updateCompleted(completed);
+}
 // The logic in this function should all be handled in the Todo class.
 const generateTodo = (data) => {
-  const todoNew = new Todo(data, "#todo-template");
+  const todoNew = new Todo(data, "#todo-template", handleCheck);
   return todoNew.getView();
 };
 

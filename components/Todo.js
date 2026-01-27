@@ -1,7 +1,8 @@
 class Todo {
-  constructor(data, templateSelector) {
+  constructor(data, templateSelector, handleCheck) {
     this._data = data;
     this._selectorElem = document.querySelector(templateSelector);
+  this._preHandleCheck = handleCheck
   }
 
   _generateDate() {
@@ -24,7 +25,7 @@ class Todo {
       console.log(this._data.completed);
     });
 
-    this._todoDeleteBtn.addEventListener("click", () => {
+    this._todoDeleteBtn.addEventListener("click", this._handleDelete () => {
       this._todoElem.remove();
     });
   }
