@@ -9,6 +9,7 @@ const addTodoButton = document.querySelector(".button_action_add");
 const addTodoPopup = document.querySelector("#add-todo-popup");
 const addTodoForm = addTodoPopup.querySelector("#add-todo-form");
 export const newTodoValidate = new FormValidator(validationConfig, addTodoForm);
+const todoCounter = new TodoCounter(initialTodos, ".counter__text");
 
 const sectionStuff = new Section({
   items: initialTodos,
@@ -25,30 +26,23 @@ const addTodoWindowPopup = new PopupWithForm({
   popupSelector: "#add-todo-popup",
   handleFormSubmit: (Inpvalues) => {
     return Inpvalues;
-
-    //   evt.preventDefault();
-
-    //   const date = new Date(dateInput);
-    //   date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
-    //   const values = { name, date, id: uuidv4() };
-
-    //   newTodoValidate._resetValidation();
-    //   renderTodo(values);
-    //   addTodoWindowPopup.close();
-    //
   },
 });
 addTodoWindowPopup.addEventListeners("click");
 //extra stuff so i dont go nuts to deal with later
 
-//this is fir later for confetti
-
 function handleCheck(completed) {
   TodoCounter.updateCompleted(completed);
 }
+
+function handleDelete(completed) {
+  if (completed) {
+    todoCounter.updateCompleted(false);
+  }
+}
 // The logic in this function should all be handled in the Todo class.
 const generateTodo = (data) => {
-  const todoNew = new Todo(data, "#todo-template", handleCheck);
+  const todoNew = new Todo(data, "#todo-template", handleCheck, handleDelete);
   return todoNew.getView();
 };
 
